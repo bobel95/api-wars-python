@@ -76,8 +76,8 @@ function isLogged() {
 
 function renderData (data) {
     // Update the URLs for next/prev page with the new ones
-    nextPage = data.next.replace('http', 'https');
-    prevPage = data.previous.replace('http', 'https');
+    nextPage = data.next ? data.next.replace('http', 'https') : null;
+    prevPage = data.previous ? data.previous.replace('http', 'https') : null;
 
     // Check if user is logged in
     // let islogged = isLogged();
