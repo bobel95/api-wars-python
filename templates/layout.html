@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="static/script/main.js" type="module" defer></script>
+    <link href="static/css/main.css" rel="stylesheet">
+    <title>API Wars</title>
+</head>
+<body>
+    <header>
+        <div class="title">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/title.png') }}">
+            </a>
+        </div>
+        <div id="topnav">
+
+            {% if 'username' in session %}
+                <span class="logged">Logged as {{ session['username'] }}</span>
+                <a href="{{ url_for('logout') }}" id="logout">
+                    <button>Logout</button>
+                </a>
+                <button class="stats">Stats</button>
+            {% else %}
+                <a href="{{ url_for('register') }}" id="register">
+                    <button>Register</button>
+                </a>
+                <a href="{{ url_for('login') }}" id="login">
+                    <button>Login</button>
+                </a>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- <div class="table-nav">
+        <button id="load">Get planets</button>
+        <button id="previous">Previous</button>
+        <button id="next">Next</button>
+    </div> -->
+
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+
+
+</body>
+</html>

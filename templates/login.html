@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="form_container">
+        <h1>Login</h1>
+        {% for message in get_flashed_messages() %}
+            <p id="flash_message">{{ message }}</p>
+        {% endfor %}
+        
+        <form class="add_form" action="/login" method="POST">
+            <label for='username'>Username</label><br>
+            <input type='text' id='username' name='username' required><br>
+            <br>
+            <label for='password'>Password:</label><br>
+            <input type='password' id='password' name='password' required><br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

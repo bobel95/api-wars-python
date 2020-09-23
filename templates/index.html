@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+        <h1>{{ message }}</h1>
+    {% endfor %}
+
+    <h1>Planets of the Star Wars universe</h1>
+    <div class="content">
+        <div class="table-nav">
+            <button id="previous">Previous</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+
+    <div class="data">
+        <table id="dataTable">
+
+        </table>
+    </div>
+
+    <div class="modal">
+        <div class="modalContent">
+            <span id="closeBtn">&times;</span>
+            <span id="modalText"></span>
+            <table id="modalTable">
+                
+            </table>
+        </div>
+    </div>
+{% endblock %}
