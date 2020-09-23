@@ -80,7 +80,7 @@ function renderData (data) {
     prevPage = data.previous ? data.previous.replace('http', 'https') : null;
 
     // Check if user is logged in
-    // let islogged = isLogged();
+    let islogged = isLogged();
     // console.log(islogged);
 
     // Disable buttons as needed
