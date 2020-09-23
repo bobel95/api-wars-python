@@ -80,8 +80,8 @@ function renderData (data) {
     prevPage = data.previous;
 
     // Check if user is logged in
-    let islogged = isLogged();
-    console.log(islogged);
+    // let islogged = isLogged();
+    // console.log(islogged);
 
     // Disable buttons as needed
     disableButtons(prevPage, nextPage);
@@ -97,8 +97,9 @@ function renderData (data) {
             <th>Surface Water (%)</th>
             <th>Population</th>
             <th>Residents</th>
-            ${islogged != 0 ? "<th>Favorite</th>" : ""}
+            
         </tr>`;
+        //${islogged != 0 ? "<th>Favorite</th>" : ""}
 
     // Loop through all the planets data
     for (let i = 0; i < data.results.length; i++) {
@@ -151,8 +152,9 @@ function renderData (data) {
                 <td>${water}</td>
                 <td>${population}</td>
                 <td>${residents}</td>
-                ${islogged != 0 ? favoriteButton : ""}
+                
             </tr>`;
+            //${islogged != 0 ? favoriteButton : ""}
     }
 }
 
