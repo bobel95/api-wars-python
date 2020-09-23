@@ -29,7 +29,7 @@ function displayResidents (e) {
         </tr>`
     
     for (let i = 0; i < peopleIds.length; i++) {
-        fetch(`http://swapi.dev/api/people/${peopleIds[i]}/`)
+        fetch(`https://swapi.dev/api/people/${peopleIds[i]}/`)
         .then(res => res.json())
         .then(data => addResident(data));
     }
