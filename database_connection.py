@@ -4,10 +4,10 @@ import os
 
 
 def get_connection_string():
-    USER = 'bobel'
-    PASSWORD = 'parola_sql'
-    HOST = 'localhost'
-    DBNAME = 'apiwars'
+    USER = 'pkwqmqjitsldej'
+    PASSWORD = 'eff02156b4c3c789a67f330482794f112d62e915808878e5203a491254408a9b'
+    HOST = 'ec2-52-17-53-249.eu-west-1.compute.amazonaws.com'
+    DBNAME = 'dfpudbh6k2ki4s'
     # USER = os.environ.get('USER')
     # PASSWORD = os.environ.get('PASSWORD')
     # HOST = os.environ.get('HOST')
