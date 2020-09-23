@@ -1,6 +1,6 @@
 import { renderData, nextPage, prevPage, displayResidents, addStats } from './display.js';
 
-let planetsData = "http://swapi.dev/api/planets/";
+let planetsData = "https://swapi.dev/api/planets/";
 
 // Load main table 
 document.addEventListener("DOMContentLoaded", getData(planetsData));
