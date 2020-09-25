@@ -3,7 +3,7 @@ import { renderData, nextPage, prevPage, displayResidents, addStats } from './di
 let planetsData = "https://swapi.dev/api/planets/";
 
 // Load main table 
-document.addEventListener("DOMContentLoaded", getData(planetsData));
+// document.addEventListener("DOMContentLoaded", getData(planetsData));
 
 // Add event listeners for clickable stuff using event delegation
 // (one of the ways of adding event listeners to elements created by simply appending to the HTML)

@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="static/script/main.js" type="module" defer></script>
-    <link href="static/css/main.css" rel="stylesheet">
+    <!-- <link href="static/css/main.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
+    <link href="static/css/navbar.css" rel="stylesheet">
+    <link href="static/css/modal.css" rel="stylesheet">
+    <link href="static/css/site.css" rel="stylesheet">
+
     <title>API Wars</title>
 </head>
 <body>
-    <header>
-        <div class="title">
+    <header class="navbar">
+
+        <div class="logo">
             <a href="{{ url_for('home') }}">
                 <img src="{{ url_for('static', filename='img/title.png') }}">
             </a>
         </div>
-        <div id="topnav">
-
+        <div class="nav-action">
             {% if 'username' in session %}
-                <span class="logged">Logged as {{ session['username'] }}</span>
                 <a href="{{ url_for('logout') }}" id="logout">
                     <button>Logout</button>
                 </a>
                 <button class="stats">Stats</button>
+                
+                <div class="logged"><img src="/static/img/user-alt-512.png" id="user-icon"></img>{{ session['username'] }}</div>
             {% else %}
                 <a href="{{ url_for('register') }}" id="register">
                     <button>Register</button>
