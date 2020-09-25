@@ -35,7 +35,6 @@ def stats():
 @app.route('/login', methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-
         username = request.form.get('username')
         password = request.form.get('password')
 
@@ -46,11 +45,13 @@ def login():
             valid_password = (bcrypt.checkpw(password.encode('utf8'), user['password'].encode('utf8')))
 
             if valid_user and valid_password:
-
                 flash('Succesfully logged in')
                 session['username'] = username
 
                 return redirect(url_for('home'))
+            
+        flash('Incorrect username/password')
+        return redirect(url_for('login'))
 
     return render_template("login.html")
 
