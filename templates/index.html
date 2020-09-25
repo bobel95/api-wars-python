@@ -2,7 +2,9 @@
 
 {% block content %}
     {% for message in get_flashed_messages() %}
+    <div class="flash">
         <h1>{{ message }}</h1>
+    </div>
     {% endfor %}
 
 

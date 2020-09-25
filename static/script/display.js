@@ -158,9 +158,9 @@ function renderData (data) {
         }
 
         let favoriteButton = `
-            <td>
-                <span class="favorite" data-pid="${planetId}" data-pname="${data.results[i].name}">&#9733;</span>
-            </td>`
+            <button class="fav-btn">
+                <img src="/static/img/upvote.png" alt="Vote" class="favorite" data-pid="${planetId}" data-pname="${data.results[i].name}"></img>
+            </button>`
 
         let imgId = parseInt(data.results[i].url.split('/')[5]);
         let imgUrl = parseInt(imgId) < 22 ? `/static/img/${imgId}.jpg` : `/static/img/placeholder.jpeg`;
@@ -215,7 +215,10 @@ function renderData (data) {
                         </tr>                    
                     </table>
                     </div>
-                <div class="residents-container">${residents}</div>
+                <div class="residents-container">
+                    ${residents}
+                    ${islogged != 0 ? favoriteButton : ""}
+                </div>
             </div>
             `
     }
@@ -223,18 +226,13 @@ function renderData (data) {
 
 
 function addStats(data) {
-    modalTable.innerHTML = `
-        <tr>
-            <th>Planet</th>
-            <th>Votes</th>
-        </tr>`;
+    modalTable.innerHTML = `<div class="flash"><h1>Voted planets</h1></div>`;
 
     for (let i = 0; i < data.length; i++) {
         modalTable.innerHTML += `
-            <tr>
-                <td>${data[i].planet}</td>
-                <td>${data[i].votes}</td>
-            </tr>`;
+            <div class="card card-modal">
+                <span class="title">${data[i].planet} - ${data[i].votes} votes</span>
+            </div>`;
     }
     modal.style.visibility = "visible";
 }

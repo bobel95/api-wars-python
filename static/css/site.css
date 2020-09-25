@@ -35,3 +35,12 @@ button:hover {
 button:focus {
     border: none;
 }
+
+.flash {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    text-shadow: 2px 2px 8px #000000;
+    /* color: #3e3466; */
+    color: white;
+}

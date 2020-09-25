@@ -15,7 +15,7 @@
 }
 
 
-.card img {
+.card .planet-img {
     border: 2px solid black;
     max-width: 300px;
 
@@ -93,11 +93,17 @@ dd {
 }
 
 .residents-container {
-    padding: 1em;
+    padding: .2em;
+    max-width: 200px;
 }
 
-#residents-row {
-    width: 100%;
+.favorite {
+    width: 90%;
+}
+
+.fav-btn {
+    width: 40%;
+    padding: .2rem;
 }
 
 @media screen and (max-width: 800px) {
