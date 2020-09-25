@@ -5,7 +5,7 @@ const prevButton = document.querySelector("#previous");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector("#closeBtn");
 const modalTable = document.querySelector("#modalTable");
-const dataTable = document.querySelector("#dataTable");
+const content = document.querySelector(".content");
 
 
 closeBtn.addEventListener("click", closeModal);
@@ -87,18 +87,19 @@ function renderData (data) {
     disableButtons(prevPage, nextPage);
     
     // Add table headers
-    dataTable.innerHTML = 
-        `<tr>
-            <th>Name</th>
-            <th>Diameter</th>
-            <th>Gravity</th>
-            <th>Climate</th>
-            <th>Terrain</th>
-            <th>Surface Water (%)</th>
-            <th>Population</th>
-            <th>Residents</th>
-            ${islogged != 0 ? "<th>Favorite</th>" : ""}
-        </tr>`;
+    // dataTable.innerHTML = 
+    //     `<tr>
+    //         <th>Name</th>
+    //         <th>Diameter</th>
+    //         <th>Gravity</th>
+    //         <th>Climate</th>
+    //         <th>Terrain</th>
+    //         <th>Surface Water (%)</th>
+    //         <th>Population</th>
+    //         <th>Residents</th>
+    //         ${islogged != 0 ? "<th>Favorite</th>" : ""}
+    //     </tr>`;
+    content.innerHTML = '';
 
     // Loop through all the planets data
     for (let i = 0; i < data.results.length; i++) {
@@ -127,11 +128,11 @@ function renderData (data) {
         if (resNum > 0) {
             residents = 
                 `<button class="residents" data-people=${peopIds.join(',')}>
-                    ${resNum} resident(s)
+                    ${resNum} known resident(s)
                 </button>
                 `;
         } else {
-            residents = "No residents";
+            residents = `<span class="residents">No known residents</span>`;
         }
 
         let favoriteButton = `
@@ -139,20 +140,62 @@ function renderData (data) {
                 <span class="favorite" data-pid="${planetId}" data-pname="${data.results[i].name}">&#9733;</span>
             </td>`
 
+        let imgId = parseInt(data.results[i].url.split('/')[5]);
+        let imgUrl = parseInt(imgId) < 22 ? `/static/img/${imgId}.jpg` : `/static/img/placeholder.jpeg`;
+
 
         // Insert data in table
-        dataTable.innerHTML += 
-            `<tr>
-                <td>${data.results[i].name}</td>
-                <td>${diameter}</td>
-                <td>${data.results[i].gravity}</td>
-                <td>${data.results[i].climate}</td>
-                <td>${data.results[i].terrain}</td>
-                <td>${water}</td>
-                <td>${population}</td>
-                <td>${residents}</td>
-                ${islogged != 0 ? favoriteButton : ""}
-            </tr>`;
+        // dataTable.innerHTML += 
+        //     `<tr>
+        //         <td>${data.results[i].name}</td>
+        //         <td>${diameter}</td>
+        //         <td>${data.results[i].gravity}</td>
+        //         <td>${data.results[i].climate}</td>
+        //         <td>${data.results[i].terrain}</td>
+        //         <td>${water}</td>
+        //         <td>${population}</td>
+        //         <td>${residents}</td>
+        //         ${islogged != 0 ? favoriteButton : ""}
+        //     </tr>`;
+
+        content.innerHTML += 
+            `
+            <div class="card card-grid">
+                <div class="img-title">
+                    <span class="planet-title">${data.results[i].name}</span>
+                    <img class="planet-img" src="${imgUrl}"></img>
+                </div>
+                <div class="table-container">
+                    <table class="planet-data" id="planet-data">
+                        <tr>
+                            <td>Diameter</td>
+                            <td>${diameter}</td>
+                        </tr>
+                        <tr>
+                            <td>Gravity</td>
+                            <td>${data.results[i].gravity}</td>
+                        </tr>
+                        <tr>
+                            <td>Climate</td>
+                            <td>${data.results[i].climate}</td>
+                        </tr>
+                        <tr>
+                            <td>Terrain</td>
+                            <td>${data.results[i].terrain}</td>
+                        </tr>
+                        <tr>
+                            <td>Surface water</td>
+                            <td>${water}</td>
+                        </tr>
+                        <tr>
+                            <td>Population</td>
+                            <td>${population}</td>
+                        </tr>                    
+                    </table>
+                    </div>
+                <div class="residents-container">${residents}</div>
+            </div>
+            `
     }
 }
 
