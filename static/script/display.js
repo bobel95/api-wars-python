@@ -13,42 +13,64 @@ closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", closeModal);
 
 
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+
 function displayResidents (e) {
     let peopleIds = e.target.dataset.people.split(',');
     
-    modalTable.innerHTML = 
-        `<tr>
-            <th>Name</th>
-            <th>Height</th>
-            <th>Mass</th>
-            <th>Hair color</th>
-            <th>Skin</th>
-            <th>Eye color</th>
-            <th>Birth year</th>
-            <th>Gender</th>
-        </tr>`
-    
+    modalTable.innerHTML = ``;
+    let residents = '';
     for (let i = 0; i < peopleIds.length; i++) {
         fetch(`https://swapi.dev/api/people/${peopleIds[i]}/`)
         .then(res => res.json())
         .then(data => addResident(data));
     }
+
     modal.style.visibility="visible";
 }
 
 
 function addResident (data) {
-    modalTable.innerHTML += 
-        `<tr>
-            <td>${data.name}</td>
-            <td>${data.height} cm</td>
-            <td>${data.mass} kg</td>
-            <td>${data.hair_color}</td>
-            <td>${data.skin_color}</td>
-            <td>${data.eye_color}</td>
-            <td>${data.birth_year}</td>
-            <td>${data.gender}</td>
-        </tr>`
+    modalTable.innerHTML +=
+        `
+        <div class="card card-modal">
+        <span class="title">${data.name}</span>
+        <table class="table-in-modal">
+            <tr>
+                <td>Height</td>
+                <td>${data.height}</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>${data.mass}</td>
+            </tr>
+            <tr>
+                <td>Hair color</td>
+                <td>${data.hair_color}</td>
+            </tr>
+            <tr>
+                <td>Skin color</td>
+                <td>${data.skin_color}</td>
+            </tr>
+            <tr>
+                <td>Eye color</td>
+                <td>${data.eye_color}</td>
+            </tr>
+            <tr>
+                <td>Birth year</td>
+                <td>${data.birth_year}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>${data.gender}</td>
+            </tr>
+        </table>
+        </div>`;
+
 }
 
 
@@ -223,4 +245,4 @@ function closeModal () {
 }
 
 
-export { nextPage, prevPage, renderData, addResident, displayResidents, addStats}
+export { nextPage, prevPage, renderData, addResident, displayResidents, addStats, topFunction }

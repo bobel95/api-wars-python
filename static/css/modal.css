@@ -13,18 +13,45 @@
 
 .modalContent {
     position: relative;
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
     justify-content: center;
     background-color: #222;
     border: 1px solid black;
-    width: 60%;
+    width: 90%;
+    height: 70%;
     padding: 5% 5%;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.74);
+    max-height: 80%;
+    overflow: scroll;
+}
+
+.table-in-modal {
+    margin: 1em auto 0 auto;
+}
+
+.table-in-modal td {
+    font-size: 1.1em;
+    padding: .5em;
+}
+
+.table-in-modal td:nth-child(odd) {
+    font-weight: 800;
+}
+
+.card-modal {
+    border: 2px solid #3e3466;
+}
+
+#modalTable {
+    /* position: relative;
+    top: 0px; */
 }
 
 #closeBtn {
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 10px;
     padding: 2%;

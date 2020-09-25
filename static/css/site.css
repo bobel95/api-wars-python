@@ -5,7 +5,7 @@ img {
 body {
     background-image: url('../img/bckgr.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-color: #16141f;
     font-family: "Montserrat", sans-serif;
 }
@@ -18,9 +18,10 @@ button {
     font-size: 1rem;
     margin: .5em;
     background-color:rgba(141, 76, 172,0);
-    border-radius: .5em;
+    /* border-radius: .5em; */
     color: white;
     width: auto;
+    padding: .5rem;
     border: none
 }
 

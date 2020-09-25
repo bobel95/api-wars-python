@@ -1,4 +1,4 @@
-import { renderData, nextPage, prevPage, displayResidents, addStats } from './display.js';
+import { renderData, nextPage, prevPage, displayResidents, addStats, topFunction } from './display.js';
 
 let planetsData = "https://swapi.dev/api/planets/";
 
@@ -31,10 +31,12 @@ document.addEventListener('click', (e) => {
 
     if (e.target.id == 'next') {
         getData(nextPage);
+        topFunction();
     }
 
     if (e.target.id == 'previous') {
         getData(prevPage);
+        topFunction();
     }
 });
 
