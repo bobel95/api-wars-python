@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, session
 import bcrypt
 import database_manager
+import os
+
 
 app = Flask(__name__)
-app.secret_key = "pn9q48v3lseifvcmq4092ct8m3oisdlfg"
+app.secret_key = os.environ.get('SECRET_KEY')
 
 
 @app.route('/')
